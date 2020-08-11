@@ -1,16 +1,12 @@
-import { Component, EventEmitter, Output, OnInit } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
     @Output() navigationTypeSelect = new EventEmitter<{ navigationType: string }>();
-
-    ngOnInit() {
-        this.navigationTypeSelect.emit({ navigationType: 'recipe' });
-    }
 
     setType(navigationTypeSelected: string) {
         this.navigationTypeSelect.emit({ navigationType: navigationTypeSelected });
