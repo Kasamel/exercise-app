@@ -6,9 +6,4 @@ import { Recipe } from './recipe.model';
     templateUrl: './recipe-book.component.html'
 })
 export class RecipeBook {
-    currentRecipe: Recipe;
-
-    selectedRecipe(selectedData: { recipeEl: Recipe }) {
-        this.currentRecipe = selectedData.recipeEl;
-    }
 }

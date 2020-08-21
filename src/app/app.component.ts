@@ -12,5 +12,4 @@ export class AppComponent {
   recipeBookSelected(navigationTypeSelected: { navigationType: string }) {
     this.navigationType = navigationTypeSelected.navigationType;
   }
-
 }
