@@ -11,6 +11,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class RecipeDetail implements OnInit {
 
     @Input() currentRecipe: Recipe;
+    id: number;
 
     constructor(private recipeService: RecipeBookService, 
             private shoppingListService: ShoppingListService,
@@ -23,6 +24,7 @@ export class RecipeDetail implements OnInit {
         this.activeRoute.params.subscribe(
             (params: Params)=>{
                 this.currentRecipe = this.recipeService.getRecipeById(params['id']);
+                this.id = params['id'];
             }
         );
     }
@@ -30,5 +32,10 @@ export class RecipeDetail implements OnInit {
     addToShoppingList(){
         this.shoppingListService.addIngredients(this.currentRecipe.ingredients);
         this.router.navigate(['/shopping-list']);
+    }
+
+    onDeleteRecipe(){
+        this.recipeService.deleteByIndex(this.activeRoute.snapshot.params['id']);
+        this.router.navigate(['../']);
     }
 }
